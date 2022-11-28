@@ -12,3 +12,17 @@ public void drawCircle(int cell) {
 
   circle(CELL_CENTER[cell % 3], CELL_CENTER[cell / 3], CELL_WIDTH);
 }
+
+public void drawX(int cell) {
+  int startX = (CELL_WIDTH * (cell % 3));
+  int startY = (CELL_WIDTH * (cell / 3));
+  int endX = (startX + CELL_WIDTH);
+  int endY = (startY + CELL_WIDTH);
+
+  line(startX, startY, endX, endY);
+
+  startX += CELL_WIDTH;
+  endX -= CELL_WIDTH;
+
+  line(startX, startY, endX, endY);
+}
