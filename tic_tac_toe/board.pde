@@ -52,7 +52,8 @@ public void turnUser(int cell) {
 
 //----------------------------------------------------------------------
 //  Checks user input and calls turnUser if the input is valid. If
-//  turnUser executes a valid move, the user's turn is ended.
+//  turnUser executes a valid move, the user's turn is ended. This
+//  method is automatically called when a key is pressed.
 //----------------------------------------------------------------------
 public void keyPressed() {
   String input = "" + key;
