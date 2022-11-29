@@ -14,7 +14,7 @@ public void turnComputer() {
 public void turnUser(int cell) {
   if (grid[cell] == 0 ) {
     drawCircle(cell);
-    grid[cell] = 1;
+    grid[cell] = 2;
     validMove = true;
   }
   else {
