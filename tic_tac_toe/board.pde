@@ -1,20 +1,28 @@
-int[] grid = new int[9];
+int[][] grid = new int[3][3];
 
 public void turnComputer() {
   int cell = int(random(9));
 
-  while (grid[cell] != 0) {
+  int cellX = (cell % 3);
+  int cellY = (cell / 3);
+
+  while (grid[cellX][cellY] != 0) {
     cell = int(random(9));
+    cellX = (cell % 3);
+    cellY = (cell / 3);
   }
 
   drawX(cell);
-  grid[cell] = 1;
+  grid[cellX][cellY] = 1;
 }
 
 public void turnUser(int cell) {
-  if (grid[cell] == 0 ) {
+  int cellX = (cell % 3);
+  int cellY = (cell / 3);
+
+  if (grid[cellX][cellY] == 0 ) {
     drawCircle(cell);
-    grid[cell] = 2;
+    grid[cellX][cellY] = 2;
     validMove = true;
   }
   else {
