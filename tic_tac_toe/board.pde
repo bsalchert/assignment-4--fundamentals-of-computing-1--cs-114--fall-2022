@@ -1,5 +1,5 @@
 //**********************************************************************
-//  Board.pde
+//  board.pde
 //
 //  Contains methods and variables for processing the logic of the
 //  Tic-Tac-Toe game.
