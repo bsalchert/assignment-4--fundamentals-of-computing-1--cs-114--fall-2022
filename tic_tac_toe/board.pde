@@ -1,5 +1,8 @@
 int[][] grid = new int[3][3];
 
+//----------------------------------------------------------------------
+//  Does the computer's turn.
+//----------------------------------------------------------------------
 public void turnComputer() {
   int cell = int(random(9));
 
@@ -16,6 +19,9 @@ public void turnComputer() {
   grid[cellX][cellY] = 1;
 }
 
+//----------------------------------------------------------------------
+//  Attempts to do the player's turn.
+//----------------------------------------------------------------------
 public void turnUser(int cell) {
   int cellX = (cell % 3);
   int cellY = (cell / 3);
