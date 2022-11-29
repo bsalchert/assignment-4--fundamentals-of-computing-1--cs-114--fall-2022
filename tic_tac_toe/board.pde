@@ -10,3 +10,14 @@ public void turnComputer() {
   drawX(cell);
   grid[cell] = 1;
 }
+
+public void turnUser(int cell) {
+  if (grid[cell] == 0 ) {
+    drawCircle(cell);
+    grid[cell] = 1;
+    validMove = true;
+  }
+  else {
+    println("Invalid placement. Please choose another cell.");
+  }
+}
