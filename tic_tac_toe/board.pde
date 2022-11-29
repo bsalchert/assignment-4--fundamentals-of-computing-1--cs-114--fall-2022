@@ -30,6 +30,7 @@ public void turnComputer() {
     grid[cellX][cellY] = 1;
 
     isUserTurn = true;
+    checkWinner("Computer");
   }
 }
 
@@ -67,6 +68,57 @@ public void keyPressed() {
 
   if (validMove) {
     validMove = false;
+    checkWinner("User");
     isUserTurn = false;
+  }
+}
+
+//----------------------------------------------------------------------
+//  Checks whether the player in the parameter has a winning
+//  arrangement of pieces.
+//----------------------------------------------------------------------
+private void checkWinner(String player) {
+  boolean validSolution = false;
+  boolean solved = false;
+  int playerPiece;
+  int[][][] solutions;
+
+  if (player.equals("User")) {
+    playerPiece = 2;
+    solutions = USER_WINS;
+  }
+  else {
+    playerPiece = 1;
+    solutions = COMPUTER_WINS;
+  }
+
+  for (int solution = 0; solution < solutions.length;
+    solution++) {
+    validSolution = true;
+
+    for (int row = 0; row < solutions[solution].length; row++) {
+      if (!validSolution) {
+        break;
+      }
+
+      for(int column = 0;
+        column < solutions[solution][row].length; column++) {
+        if ((solutions[solution][row][column] == playerPiece)
+          && !(grid[row][column] == playerPiece)) {
+          validSolution = false;
+          break;
+        }
+        else {
+          if ((row == (solutions[solution].length - 1))
+            && (column == (solutions[solution][row].length) - 1)) {
+            solved = true;
+          }
+        }
+      }
+    }
+  }
+
+  if (solved) {
+    println(player + " has won.");
   }
 }
