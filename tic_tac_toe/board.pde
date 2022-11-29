@@ -8,7 +8,9 @@
 int[][] grid = new int[3][3];
 boolean isUserTurn = false;
 boolean validMove = false;
+boolean gameOver = false;
 String validKeys = "012345678";
+int moveCounter = 0;
 
 //----------------------------------------------------------------------
 //  Does the computer's turn.
@@ -28,22 +30,26 @@ public void turnComputer() {
 
     drawX(cell);
     grid[cellX][cellY] = 1;
+    moveCounter++;
 
     isUserTurn = true;
-    checkWinner("Computer");
+    if (moveCounter > 1) {
+      checkWinner("Computer");
+    }
   }
 }
 
 //----------------------------------------------------------------------
 //  Attempts to do the player's turn.
 //----------------------------------------------------------------------
-public void turnUser(int cell) {
+private void turnUser(int cell) {
   int cellX = (cell % 3);
   int cellY = (cell / 3);
 
   if (grid[cellX][cellY] == 0 ) {
     drawCircle(cell);
     grid[cellX][cellY] = 2;
+    moveCounter++;
     validMove = true;
   }
   else {
@@ -57,19 +63,31 @@ public void turnUser(int cell) {
 //  method is automatically called when a key is pressed.
 //----------------------------------------------------------------------
 public void keyPressed() {
-  String input = "" + key;
-  if (validKeys.indexOf(input) != -1) {
-    int cell = Integer.parseInt(input);
-    turnUser(cell);
+  if (!gameOver) {
+    String input = "" + key;
+
+    if (validKeys.indexOf(input) != -1) {
+      int cell = Integer.parseInt(input);
+      turnUser(cell);
+    }
+    else {
+      println("Incorrect Key Pressed. Please try again.");
+    }
+
+    if (validMove) {
+      validMove = false;
+
+      if (moveCounter > 5) {
+        checkWinner("User");
+      }
+
+      if (!gameOver) {
+        isUserTurn = false;
+      }
+    }
   }
   else {
-    println("Incorrect Key Pressed. Please try again.");
-  }
-
-  if (validMove) {
-    validMove = false;
-    checkWinner("User");
-    isUserTurn = false;
+    println("The game is over.");
   }
 }
 
@@ -119,6 +137,18 @@ private void checkWinner(String player) {
   }
 
   if (solved) {
-    println(player + " has won.");
+    println("The " + player + " has won.");
+    gameOver = true;
+  }
+  else {
+    if (player.equals("Computer")) {
+      if (moveCounter == 9) {
+        println("Neither the User nor the Computer has won.");
+        gameOver = true;
+      }
+      else {
+        println("The game is still in play.");
+      }
+    }
   }
 }
