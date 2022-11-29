@@ -1,3 +1,10 @@
+//**********************************************************************
+//  tic_tac_toe.pde
+//
+//  Main driver for the Tic-Tac-Toe game. Contains the setup() and
+//  draw() methods and all necessary code for interacting with the user.
+//**********************************************************************
+
 boolean isUserTurn = false;
 boolean validMove = false;
 String validKeys = "012345678";
