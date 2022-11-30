@@ -83,6 +83,7 @@ public void keyPressed() {
 
       if (!gameOver) {
         isUserTurn = false;
+        turnComputer();
       }
     }
   }
