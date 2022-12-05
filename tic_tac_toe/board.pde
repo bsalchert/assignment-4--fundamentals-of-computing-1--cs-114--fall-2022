@@ -9,7 +9,6 @@ int[][] grid = new int[3][3];
 boolean isUserTurn = false;
 boolean validMove = false;
 boolean gameOver = false;
-String validKeys = "012345678";
 int moveCounter = 0;
 
 //----------------------------------------------------------------------
@@ -66,7 +65,7 @@ public void keyPressed() {
   if (!gameOver) {
     String input = "" + key;
 
-    if (validKeys.indexOf(input) != -1) {
+    if (VALID_KEYS.indexOf(input) != -1) {
       int cell = Integer.parseInt(input);
       turnUser(cell);
     }

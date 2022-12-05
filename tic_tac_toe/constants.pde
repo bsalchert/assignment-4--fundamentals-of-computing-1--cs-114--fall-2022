@@ -9,6 +9,7 @@
 final int WIDTH = 500;
 final int[] CELL_CENTER = {(WIDTH / 6), (WIDTH / 2), ((5 * WIDTH) / 6)};
 final int CELL_WIDTH = (WIDTH / 3);
+final String VALID_KEYS = "012345678";
 final int[][][] USER_WINS = {{{2, 2, 2}, {0, 0, 0}, {0, 0, 0}},
                              {{0, 0, 0}, {2, 2, 2}, {0, 0, 0}},
                              {{0, 0, 0}, {0, 0, 0}, {2, 2, 2}},
